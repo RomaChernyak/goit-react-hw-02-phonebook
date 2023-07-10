@@ -1,0 +1,15 @@
+.phonebook_form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border: 2px solid black;
+    padding: 12px;
+
+    width: 240px;
+}
+
+.phonebook_label {
+    display: flex;
+    flex-direction: column;
+}
