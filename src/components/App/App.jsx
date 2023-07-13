@@ -55,7 +55,6 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm
           handleAddContact={this.handleAddContact}
-          onSubmit={this.formSubmitHandler} // onSubmit не прослуховувач (проп) для події, а просто назва пропу на компонент (this.props.onSubmit)
         />
         <h2>Contacts</h2>
         <Filter
