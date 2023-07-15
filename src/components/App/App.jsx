@@ -36,7 +36,15 @@ export class App extends Component {
 
   handleAddContact = contact => {
     const { contacts } = this.state;
-    const isContactExisted = contacts.find(({ name }) => name === contact.name);
+    const isContactExisted = contacts.find(({ name, number }) => {
+      const normalizedItemName = name.toLowerCase().trim().replace(/\s+/g, " ");
+      const normalizedSearchedName = contact.name.toLowerCase().trim().replace(/\s+/g, " ");
+      const normalizedItemNumber = number.toLowerCase().trim().replace(/\s+/g, "").replaceAll("-", "");
+      const normalizedSearchedNumber = contact.number.toLowerCase().trim().replace(/\s+/g, "").replace("-", "");
+
+      return (normalizedItemNumber === normalizedSearchedNumber) ||
+        (normalizedItemName === normalizedSearchedName);
+    });
 
     if (isContactExisted) {
       return Notiflix.Notify.failure(`${contact.name} already exists in your contact list.`);
